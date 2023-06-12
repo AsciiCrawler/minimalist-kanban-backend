@@ -1,3 +1,10 @@
+## Preview
+<a href="https://google.com" target="blank">Live preview</a>
+<p align="center" float="left">
+    <img src="readme/minimalist-kanban-1.png" width="40%" /> 
+    <img src="readme/minimalist-kanban-0.png" width="40%" />
+</p>
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
