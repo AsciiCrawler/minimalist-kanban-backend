@@ -1,3 +1,4 @@
+import { ApiHideProperty, ApiProperty } from '@nestjs/swagger';
 import { Transform, Type } from 'class-transformer';
 import {
     IsArray,
@@ -20,6 +21,7 @@ export enum CardStateEnum {
 }
 
 export class CardModelCommentDto {
+    @ApiProperty({ type: ObjectId })
     readonly _id: ObjectId;
 
     @IsString()
@@ -46,6 +48,7 @@ export class CardModelAttachment {
   @Transform(({ value }) => SafeMongoIdTransform(value)) */
     user: UserModelDto;
 
+    @ApiProperty({ type: ObjectId })
     @Type(() => ObjectId)
     @Transform(({ value }) => SafeMongoIdTransform(value))
     _id: ObjectId;
@@ -58,9 +61,11 @@ export class CardModelAttachment {
 }
 
 export class CardModelDto {
+    @ApiProperty({ type: ObjectId })
     _id: ObjectId;
     creator: UserModelDto;
     description: string;
+    @ApiProperty({ type: ObjectId })
     boardId: ObjectId;
     title: string;
     index: number;
@@ -88,6 +93,7 @@ export class CardModelDto {
 }
 
 export class CardCreateRequestDto {
+    @ApiProperty({ type: ObjectId })
     @Type(() => ObjectId)
     @Transform(({ value }) => SafeMongoIdTransform(value))
     boardId: ObjectId;
@@ -103,34 +109,40 @@ export class CardCreateRequestDto {
 }
 
 export class CardGetByBoardIdParamDto {
+    @ApiProperty({ type: ObjectId })
     @Type(() => ObjectId)
     @Transform(({ value }) => SafeMongoIdTransform(value))
     boardId: ObjectId;
 }
 
 export class CardGetByIdParamDto {
+    @ApiProperty({ type: ObjectId })
     @Type(() => ObjectId)
     @Transform(({ value }) => SafeMongoIdTransform(value))
     cardId: ObjectId;
 }
 
 export class CardUpdateCardParamDto {
+    @ApiProperty({ type: ObjectId })
     @Type(() => ObjectId)
     @Transform(({ value }) => SafeMongoIdTransform(value))
     cardId: ObjectId;
 }
 
 export class CardDeleteCommentDto {
+    @ApiProperty({ type: ObjectId })
     @Type(() => ObjectId)
     @Transform(({ value }) => SafeMongoIdTransform(value))
     cardId: ObjectId;
 
+    @ApiProperty({ type: ObjectId })
     @Type(() => ObjectId)
     @Transform(({ value }) => SafeMongoIdTransform(value))
     commentId: ObjectId;
 }
 
 export class UpdateDescriptionDto {
+    @ApiProperty({ type: ObjectId })
     @Type(() => ObjectId)
     @Transform(({ value }) => SafeMongoIdTransform(value))
     cardId: ObjectId;
@@ -140,6 +152,7 @@ export class UpdateDescriptionDto {
 }
 
 export class UpdateTitleDto {
+    @ApiProperty({ type: ObjectId })
     @Type(() => ObjectId)
     @Transform(({ value }) => SafeMongoIdTransform(value))
     cardId: ObjectId;
@@ -149,6 +162,7 @@ export class UpdateTitleDto {
 }
 
 class BatchUpdateIndexAndState_CardsDto {
+    @ApiProperty({ type: ObjectId })
     @Type(() => ObjectId)
     @Transform(({ value }) => SafeMongoIdTransform(value))
     cardId: ObjectId;
@@ -177,16 +191,19 @@ export class AttachFileDto {
     @MinLength(35)
     url: string;
 
+    @ApiProperty({ type: ObjectId })
     @Type(() => ObjectId)
     @Transform(({ value }) => SafeMongoIdTransform(value))
     cardId: ObjectId;
 }
 
 export class DeleteFileDto {
+    @ApiProperty({ type: ObjectId })
     @Type(() => ObjectId)
     @Transform(({ value }) => SafeMongoIdTransform(value))
     cardId: ObjectId;
 
+    @ApiProperty({ type: ObjectId })
     @Type(() => ObjectId)
     @Transform(({ value }) => SafeMongoIdTransform(value))
     attachmentId: ObjectId;
@@ -200,10 +217,12 @@ export class PostCommentDto {
 }
 
 export class AssignUserDto {
+    @ApiProperty({ type: ObjectId })
     @Type(() => ObjectId)
     @Transform(({ value }) => SafeMongoIdTransform(value))
     cardId: ObjectId;
 
+    @ApiProperty({ type: ObjectId })
     @Type(() => ObjectId)
     @Transform(({ value }) => SafeMongoIdTransform(value))
     userId: ObjectId;

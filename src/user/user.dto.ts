@@ -6,8 +6,9 @@ import {
 } from 'class-validator';
 import { ObjectId } from 'mongodb';
 import * as bcrypt from 'bcrypt';
-
+import { ApiHideProperty, ApiProperty } from '@nestjs/swagger';
 export class UserModelDto {
+    @ApiProperty({ type: ObjectId })
     _id: ObjectId;
     password: string | undefined;
     username: string;
@@ -30,7 +31,8 @@ export class UserCreateDto {
     @IsString()
     username: string;
 
-    
+
+    @ApiProperty({ description: "Honeypot field - Should be empty" })
     @IsString()
     phone: string; /* HoneyPot */
 

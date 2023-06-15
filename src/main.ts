@@ -5,8 +5,6 @@ import compression from 'compression';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import cookieParser from 'cookie-parser';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-const fs = require('fs');
-
 async function bootstrap() {
     const app = await NestFactory.create<NestExpressApplication>(AppModule);
     app.use(compression());
@@ -22,12 +20,7 @@ async function bootstrap() {
     });
 
     {
-        const config = new DocumentBuilder()
-            .setTitle('Cats example')
-            .setDescription('The cats API description')
-            .setVersion('1.0')
-            .addTag('cats')
-            .build();
+        const config = new DocumentBuilder().setTitle('Api Endpoints').setVersion('1.0').build();
         const document = SwaggerModule.createDocument(app, config);
         SwaggerModule.setup("api", app, document);
     }

@@ -1,3 +1,4 @@
+import { ApiHideProperty, ApiProperty } from '@nestjs/swagger';
 import { Transform, Type } from 'class-transformer';
 import { IsNotEmpty, IsString } from 'class-validator';
 import { ObjectId } from 'mongodb';
@@ -6,6 +7,7 @@ import { SafeMongoIdTransform } from 'src/custom-validators/safeMongoIdTransform
 import { UserModelDto } from 'src/user/user.dto';
 
 export class BoardModelDto {
+    @ApiProperty({ type: ObjectId })
     readonly _id: ObjectId;
     creator: UserModelDto;
     title: string;
@@ -24,6 +26,7 @@ export class BoardModelDto {
 }
 
 export class BoardIdDto { 
+    @ApiProperty({ type: ObjectId })
     @Type(() => ObjectId)
     @Transform(({ value }) => SafeMongoIdTransform(value))
     boardId: ObjectId;
@@ -31,6 +34,7 @@ export class BoardIdDto {
 
 
 export class BoardPendingRoleDto {
+    @ApiProperty({ type: ObjectId })
     _id: ObjectId;
     creator: UserModelDto;
     title: string;
@@ -44,28 +48,33 @@ export class BoardCreateRequestDto {
 }
 
 export class RemoveUserDto {
+    @ApiProperty({ type: ObjectId })
     @Type(() => ObjectId)
     @Transform(({ value }) => SafeMongoIdTransform(value))
     boardId: ObjectId;
 
+    @ApiProperty({ type: ObjectId })
     @Type(() => ObjectId)
     @Transform(({ value }) => SafeMongoIdTransform(value))
     userId: ObjectId;
 }
 
 export class BoardAddUserRequestDto {
+    @ApiProperty({ type: ObjectId })
     /* @Type(() => ObjectId)
   @Transform(({ value }) => SafeMongoIdTransform(value)) */
     @IsNotEmpty()
     @IsString()
     userName: string;
 
+    @ApiProperty({ type: ObjectId })
     @Type(() => ObjectId)
     @Transform(({ value }) => SafeMongoIdTransform(value))
     boardId: ObjectId;
 }
 
 export class BoardDeleteRequestDto {
+    @ApiProperty({ type: ObjectId })
     @Type(() => ObjectId)
     @Transform(({ value }) => SafeMongoIdTransform(value))
     boardId: ObjectId;

@@ -1,7 +1,9 @@
+import { ApiProperty } from "@nestjs/swagger";
 import { IsMimeType, IsNotEmpty, IsNumber, IsString, IsUUID } from "class-validator";
 import { ObjectId } from "mongodb";
 
 export class FileModelDto {
+    @ApiProperty({ type: ObjectId })
     readonly _id: ObjectId;
     readonly creationDate: Date;
     userId: ObjectId;
