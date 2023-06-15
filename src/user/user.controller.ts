@@ -17,8 +17,6 @@ import { AuthDto } from 'src/auth/payload.dto';
 import { JWTDto, UserLoginDto, UserModelDto, UserCreateDto } from './user.dto';
 import { UserService } from './user.service';
 import { Response } from 'express';
-import { Cache } from 'cache-manager';
-import { CACHE_MANAGER } from '@nestjs/cache-manager';
 
 @Controller('user')
 export class UserController {
